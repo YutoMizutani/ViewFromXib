@@ -19,3 +19,9 @@ Highlight
 Target
 ------------
 * main view created by code(no use Storyboard), and add partially .xib files.
+
+
+
+Sample working window
+------------
+![iPad sample working view](https://github.com/YutoMizutani/ViewFromXib/sampleWindow.png)
