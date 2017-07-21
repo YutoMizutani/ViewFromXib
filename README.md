@@ -24,4 +24,4 @@ Target
 
 Sample working window
 ------------
-![iPad sample working view](https://github.com/YutoMizutani/ViewFromXib/sampleWindow.png)
+![iPad sample working view](https://github.com/YutoMizutani/ViewFromXib/blob/master/sampleWindow.png)
