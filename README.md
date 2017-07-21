@@ -2,7 +2,7 @@
 
 Abstract
 ============
- .xib(nib) file used from UIViewController.
+* .xib(nib) file used from UIViewController.
 
 Writing
 ------------
@@ -19,7 +19,6 @@ Highlight
 Target
 ------------
 * main view created by code(no use Storyboard), and add partially .xib files.
-
 
 
 Sample working window
