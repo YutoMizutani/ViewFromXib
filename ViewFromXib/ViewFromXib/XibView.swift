@@ -16,7 +16,7 @@ class XibView: UIView {
         class ViewController: UIViewController {
             override func viewDidLoad() {
                 super.viewDidLoad()
-                self.view.addSubview(XibView(frame: CGRect(self.view.frame)))
+            self.view.addSubview(XibView(frame: CGRect(self.view.frame)))
             }
         }
      
@@ -24,9 +24,10 @@ class XibView: UIView {
     
     // Declaration nib view (referenced from other class)
     var nibView:UIView?
+    var nibLabel:UILabel?
     
     // Outlet
-    @IBOutlet weak var xibLabel: UILabel!
+    @IBOutlet private weak var xibLabel: UILabel!
     
     // Required method (in this case, nouse storyboard)
     required init(coder aDecoder: NSCoder) {
@@ -39,9 +40,10 @@ class XibView: UIView {
         
         configureView()
         layoutView()
+        setReferenceVariables()
     }
     
-    internal func configureView() {
+    private func configureView() {
         create_nibView: do {
             nibView = loadXib()
             if nibView != nil {
@@ -51,7 +53,7 @@ class XibView: UIView {
     }
     
     // Connect Class and Xib
-    internal func loadXib() -> UIView {
+    private func loadXib() -> UIView {
         let nib = UINib(nibName: "XibView", bundle: Bundle.init(for: XibView.self))//Bundle.init(for: MenuViewXibXIII.self))
         let view = nib.instantiate(withOwner: nil, options: nil).first as! UIView
         return view
@@ -66,6 +68,18 @@ class XibView: UIView {
         nibView?.frame = self.frame
     }
     
+    private func setReferenceVariables() {
+        // find label from nibView
+        if nibView != nil && !nibView!.subviews.isEmpty {
+            let subviews = (nibView?.subviews)!
+            for i in 0..<subviews.count {
+                if subviews[i] is UILabel {
+                    nibLabel = (subviews[i] as! UILabel)
+                }
+            }
+        }
+    }
+    
     // Initialize subviews in nib
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -74,7 +88,7 @@ class XibView: UIView {
         configureNibView()
     }
     
-    // Write your own
+    // Write your own settings xib subviews when loaded
     internal func configureNibView() {
         // nibView's background color (!= XibView's view)
         self.backgroundColor = UIColor.red
