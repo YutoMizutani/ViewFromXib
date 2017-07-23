@@ -11,15 +11,15 @@ import UIKit
 class ViewController: UIViewController {
     
     // explanation Label
-    internal var explanationLabel:UILabel?
+    var explanationLabel:UILabel?
     
     // add from .xib file (Nib)
-    internal var xibView:XibView?
+    var xibView:XibView?
     
     // add by ViewController (Code)
-    internal var vcView:UIView?
-    internal var vcButton:UIButton?
-    internal var numOfCount:Int = 0
+    var vcView:UIView?
+    var vcButton:UIButton?
+    var numOfCount:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,16 +89,7 @@ class ViewController: UIViewController {
     
     @IBAction func pushButton(_ sender:UIButton) {
         numOfCount += 1
-        
-        // find label from nibView
-        if xibView?.nibView != nil && !xibView!.nibView!.subviews.isEmpty {
-            let subviews = (xibView?.nibView?.subviews)!
-            for i in 0..<subviews.count {
-                if subviews[i] is UILabel {
-                    (subviews[i] as! UILabel).text = "\(numOfCount)"
-                }
-            }
-        }
+        xibView?.nibLabel?.text = "\(numOfCount)"
     }
 }
 
